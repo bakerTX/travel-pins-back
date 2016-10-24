@@ -7,6 +7,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var jwt = require('express-jwt');
+
+var jwtCheck = jwt({
+  secret: new Buffer(process.env.AUTH_SECRET, 'base64'),
+  audience: process.env.AUTH_ID
+});
 
 mongoose.connect(process.env.DB_CONNECTION);
 
@@ -30,7 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', routes);
+app.use('/users', jwtCheck);
 app.use('/users', users);
+app.use('/pins', jwtCheck);
 app.use('/pins', pins);
 
 // catch 404 and forward to error handler
