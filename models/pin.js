@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const pinSchema = {
-  userId: String
+  userId: String,
   date: String,
   location: String,
   journal: String,
