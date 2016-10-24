@@ -6,4 +6,4 @@ const userSchema = {
 
 var User = mongoose.model('User', userSchema);
 
-module.exports = Uin;
+module.exports = User;
