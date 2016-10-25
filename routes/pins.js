@@ -36,6 +36,9 @@ router.get('/:userID', function(req,res,next){
       res.status(500).send();
     } else{
       res.json(pins);
+      }
+    })
+});    
 
 //PUT method
 router.put('/', function (req, res) {
