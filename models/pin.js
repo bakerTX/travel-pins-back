@@ -9,7 +9,7 @@ const pinSchema = {
   rating: Number,
   recommendation: String,
   eventAttended: String,
-  transportation: String,
+  transportation: String
 }
 
 var Pin = mongoose.model('Pin', pinSchema);
