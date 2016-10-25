@@ -36,9 +36,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/', routes);
-app.use('/users', jwtCheck);
+// app.use('/users', jwtCheck);
 app.use('/users', users);
-app.use('/pins', jwtCheck);
+// app.use('/pins', jwtCheck);
 app.use('/pins', pins);
 
 // catch 404 and forward to error handler
