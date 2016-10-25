@@ -4,7 +4,10 @@ var Pin = require('../models/pin');
 
 // GET method
 router.get('/', function(req,res,next){
-  Pin.find({}, function(err, pins){
+  console.log('req.user', req.user);
+  Pin.find({
+    user: req.user.sub
+  }, function(err, pins){
     if (err){
       res.status(500).send();
     } else {
@@ -25,6 +28,18 @@ router.post('/', function(req,res,next){
   })
 })
 
+router.get('/:userID', function(req,res,next){
+  Pin.find({
+    user: req.params.userID
+  }, function(err, pins){
+    if (err){
+      res.status(500).send();
+    } else{
+      res.json(pins);
+      }
+    })
+});    
+
 //PUT method
 router.put('/', function (req, res) {
   var updatedPin = Object.assign(res.pin, req.body)
@@ -37,6 +52,7 @@ router.put('/', function (req, res) {
   })
 })
 
+
 //DELETE method
 router.delete('/', function (req, res) {
   pin.remove(function (err) {
@@ -47,5 +63,6 @@ router.delete('/', function (req, res) {
     }
   })
 })
+
 
 module.exports = router;
