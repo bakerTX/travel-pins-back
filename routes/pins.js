@@ -38,31 +38,31 @@ router.get('/:userID', function(req,res,next){
       res.json(pins);
       }
     })
-});    
+});
 
-//PUT method
-router.put('/', function (req, res) {
-  var updatedPin = Object.assign(res.pin, req.body)
-  updatedPin.save(function (err) {
-    if (err) {
-      res.status(500).send()
-    } else {
-      res.json(updatedPin)
-    }
-  })
-})
-
-
-//DELETE method
-router.delete('/', function (req, res) {
-  pin.remove(function (err) {
-    if (err) {
-      res.status(500).send()
-    } else {
-      res.status(204).send()
-    }
-  })
-})
+// //PUT method
+// router.put('/', function (req, res) {
+//   var updatedPin = Object.assign(res.pin, req.body)
+//   updatedPin.save(function (err) {
+//     if (err) {
+//       res.status(500).send()
+//     } else {
+//       res.json(updatedPin)
+//     }
+//   })
+// })
+//
+//
+// //DELETE method
+// router.delete('/', function (req, res) {
+//   pin.remove(function (err) {
+//     if (err) {
+//       res.status(500).send()
+//     } else {
+//       res.status(204).send()
+//     }
+//   })
+// })
 
 
 module.exports = router;
