@@ -39,6 +39,17 @@ router.get('/:userID', function(req,res,next){
       }
     })
 });
+//DELETE method
+router.delete('/:id', function (req, res) {
+  Pin.find({_id: req.params.id}).remove(function (err) {
+    if (err) {
+      console.log(err);
+      res.status(500).send()
+    } else {
+      res.status(204).send()
+    }
+  })
+})
 
 // //PUT method
 // router.put('/', function (req, res) {
@@ -52,17 +63,8 @@ router.get('/:userID', function(req,res,next){
 //   })
 // })
 //
-//
-// //DELETE method
-// router.delete('/', function (req, res) {
-//   pin.remove(function (err) {
-//     if (err) {
-//       res.status(500).send()
-//     } else {
-//       res.status(204).send()
-//     }
-//   })
-// })
+
+
 
 
 module.exports = router;
